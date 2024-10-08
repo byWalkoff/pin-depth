@@ -1,0 +1,52 @@
+@import "nav-variables";
+@import "@/scss/general/general-variables";
+
+#{$nav-item}{
+  position: relative;
+  padding: 8px;
+  margin: 0 2px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  cursor: pointer;
+
+  &__link{
+    text-wrap: nowrap;
+  }
+
+  &:hover > #{$nav-list}{
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+
+  & > #{$nav-list}{
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(-10px);
+    flex-direction: column;
+    transition: ease-in .2s;
+    position: absolute;
+    top: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 1px 3px 9px $border-gray-light;
+
+    & > #{$nav-item}{
+      padding: 12px 14px;
+      margin: 0;
+      border-bottom: 1px solid $border-gray-light;
+
+      &:before{
+        content: '';
+        display: block;
+        width: 30px;
+      }
+
+      &:hover{
+        background: $hover-light-gray;
+        cursor: pointer;
+      }
+    }
+  }
+}
